@@ -51,7 +51,7 @@ exclude = [
 "tests/*" = ["S101"]
 
 [tool.ruff.lint]
-ignore = ["B904", "COM812"]
+ignore = ["COM812"]
 select = [
     "E",
     "F",
@@ -66,6 +66,7 @@ select = [
     "BLE",
     "COM",
     "C4",
+    "C90",
     "T20",
     "Q",
     "RET",
@@ -75,7 +76,11 @@ select = [
     "N",
     "PERF",
     "W",
-    "RUF"
+    "RUF",
+    "ERA",
+    "UP",
+    "PLC",
+    "RET",
 ]
 
 [tool.ruff.lint.flake8-type-checking]

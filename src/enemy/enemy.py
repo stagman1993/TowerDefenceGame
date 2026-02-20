@@ -8,6 +8,8 @@ class Enemy:
         self.target_waypoint = 1
         self.speed = 5
         self.color = None
+        self.target = None
+        self.movement = None
 
     def update(self) -> None:
         self.move()
@@ -19,8 +21,9 @@ class Enemy:
         else:
             # enemy has reached the end of the path
             self.kill()
+            return
 
-            # calculate distance to target
+        # calculate distance to target
         dist = self.movement.length()
         # check if remaining distance is greater than the enemy speed
         if dist >= self.speed:
