@@ -6,6 +6,8 @@ requires-python = ">=3.14"
 dependencies = [
     "pydantic>=2.12.5",
     "pygame-ce>=2.5.6",
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
 ]
 
 [dependency-groups]
