@@ -1,8 +1,13 @@
+import logging
+
 import pygame as pg
-from Enemy.Enemy import *
+
+from enemy.enemy import BlueEnemy
+
+logger = logging.Logger(__name__)
 
 pg.init()
-print(pg.version.ver)
+logger.info(pg.version.ver)
 clock = pg.time.Clock()
 
 window = pg.display.set_mode((800, 600))
@@ -18,7 +23,7 @@ nodes = [
     (380, 421),
     (421, 421),
     (421, 330),
-    (800, 300)
+    (800, 300),
 ]
 
 enemy1 = BlueEnemy(nodes)
@@ -27,9 +32,8 @@ while run:
     clock.tick(60)
     window.fill("black")
 
-
     pg.draw.lines(window, "grey", False, nodes, 10)
-    pg.draw.circle(window, enemy1.color, enemy1.pos, 10)
+    pg.draw.circle(window, enemy1.colour, enemy1.pos, 10)
     pg.display.update()
 
     enemy1.update()
@@ -39,4 +43,3 @@ while run:
             run = False
 
 pg.quit()
-
