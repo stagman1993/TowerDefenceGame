@@ -1,4 +1,14 @@
+from enum import Flag, auto
+
 import pygame as pg
+
+
+class EnemyType(Flag):
+    GROUND = auto()
+    FLYING = auto()
+    AQUATIC = auto()
+    # Combinations come for free with Flag
+    ALL = GROUND | FLYING | AQUATIC
 
 
 class Enemy:
@@ -22,7 +32,6 @@ class Enemy:
             # enemy has reached the end of the path
             self.kill()
             return
-
         # calculate distance to target
         dist = self.movement.length()
         # check if remaining distance is greater than the enemy speed
