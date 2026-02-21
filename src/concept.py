@@ -36,7 +36,7 @@ while run:
     clock.tick(60)
     window.fill("black")
 
-    tower_placement(tower_slots)
+    tower_placement(tower_slots, pg.mouse.get_pos())
     for tower_slot in tower_slots:
         pg.draw.rect(window, tower_slot.colour, tower_slot.rect, width=4)
         if tower_slot.tower is not None:

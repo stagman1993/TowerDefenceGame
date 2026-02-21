@@ -6,13 +6,13 @@ requires-python = ">=3.14"
 dependencies = [
     "pydantic>=2.12.5",
     "pygame-ce>=2.5.6",
-    "ruff>=0.15.2",
-    "ty>=0.0.18",
 ]
 
 [dependency-groups]
 dev = [
     "pre-commit>=4.5.1",
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
 ]
 
 
@@ -54,6 +54,7 @@ exclude = [
 
 [tool.ruff.lint]
 ignore = ["COM812"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 select = [
     "E",
     "F",
@@ -83,6 +84,7 @@ select = [
     "UP",
     "PLC",
     "RET",
+
 ]
 
 [tool.ruff.lint.flake8-type-checking]
