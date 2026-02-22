@@ -24,7 +24,6 @@ class Projectile:
             if self in self.projectiles:
                 self.projectiles.remove(self)
             return
-
         self.movement = self.target.pos - self.pos
         dist = self.movement.length()
 
@@ -32,5 +31,6 @@ class Projectile:
             # Close enough: consider it a hit and despawn.
             self.pos = self.target.pos.copy()
             if self in self.projectiles:
+                self.target.health -= 1
                 self.projectiles.remove(self)
         self.pos += self.movement.normalize() * self.speed

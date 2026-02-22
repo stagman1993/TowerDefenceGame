@@ -43,8 +43,8 @@ tower_slots = tower_slot_generator(tower_postions)
 Debug to spawn Enemies
 """
 enemies = []
-for _i in range(1):
-    enemy = BlueEnemy(nodes)
+for _i in range(10):
+    enemy = BlueEnemy(nodes, enemies)
     enemy.speed = random.randint(1, 8)  # noqa: S311
     enemies.append(enemy)
 
@@ -65,7 +65,7 @@ while run:
 
     pg.draw.lines(window, "grey", False, nodes, 10)
     for tower_slot in tower_slots:
-        pg.draw.rect(window, tower_slot.colour, tower_slot.rect, width=4)
+        pg.draw.rect(window, tower_slot.colour, tower_slot.rect, width=tower_slot.width)
         if tower_slot.tower is not None:
             pg.draw.circle(window, tower_slot.tower.colour, tower_slot.rect.center, 15)
             pg.draw.circle(window, "pink", tower_slot.rect.center, tower_slot.tower.range, width=2)

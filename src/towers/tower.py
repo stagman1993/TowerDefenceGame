@@ -1,5 +1,5 @@
 import abc
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 import pygame as pg
 from pydantic import BaseModel, ConfigDict
@@ -37,7 +37,7 @@ class TowerSlot(BaseModel):
     tower: Tower = None  # ty:ignore[invalid-assignment]
     pos: tuple[int, int] | None = None
     width: int = 4
-    colour: str = "green"
+    colour: Literal["green", "red"] = "green"
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     def model_post_init(self, _: None) -> None:
