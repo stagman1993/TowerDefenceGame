@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Literal
 import pygame as pg
 from pydantic import BaseModel, ConfigDict
 
-from projectiles.projectile import Projectile
+from projectiles.projectile import BasicProjectile, Projectile
 
 if TYPE_CHECKING:
     from enemy.enemy import Enemy
@@ -94,7 +94,7 @@ class BasicTower(Tower):
         if len(self.targets) > 0:
             if self.counter == self.speed:
                 self.counter = 0
-                self.projectiles.append(Projectile(self.position, self.targets[0], self.projectiles))
+                self.projectiles.append(BasicProjectile(self.position, self.targets[0], self.projectiles))
             else:
                 self.counter += 1
                 self.colour = "Orange"

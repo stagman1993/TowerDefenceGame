@@ -1,3 +1,4 @@
+import abc
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -6,15 +7,32 @@ if TYPE_CHECKING:
     from enemy.enemy import Enemy
 
 
-# TODO: Refactor this into an abstract base class
-class Projectile:
+class Projectile(abc.ABC):
     def __init__(self, position: pg.Vector2, target: Enemy, projectiles: list[Projectile]) -> None:
-        self.colour = "Yellow"
         self.pos = position.copy()
         self.target = target
         self.speed = 5
         self.movement = self.target.pos - self.pos
         self.projectiles = projectiles
+
+    @abc.abstractmethod
+    def update(self) -> None:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def move(self) -> None:
+        raise NotImplementedError
+
+
+class BasicProjectile(Projectile):
+    def __init__(self, position: pg.Vector2, target: Enemy, projectiles: list[Projectile]) -> None:
+        super().__init__(position, target, projectiles)
+        self.colour = "Yellow"
+        self.pos = position.copy()
+        self.target = target
+        self.speed = 5
+        self.movement = self.target.pos - self.pos
+        self.damage = 1
 
     def update(self) -> None:
         self.move()
@@ -31,6 +49,6 @@ class Projectile:
             # Close enough: consider it a hit and despawn.
             self.pos = self.target.pos.copy()
             if self in self.projectiles:
-                self.target.health -= 1
+                self.target.health -= self.damage
                 self.projectiles.remove(self)
         self.pos += self.movement.normalize() * self.speed
